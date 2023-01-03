@@ -19,7 +19,7 @@ describe('CourseCreator', () => {
 
     const course = new Course({id, name, duration});
 
-    await creator.run(id, name, duration);
+    await creator.run({id, name, duration});
 
     repository.assertLastSavedCourseIs(course);
   });
