@@ -9,7 +9,7 @@ Feature: Create a new course
     {
       "id":"ef8ac118-8d7f-49cc-abec-78e0d05af80a",
       "name": "The best course",
-      "duration": "5 hours"
+      "duration": 2
     }
     """
     Then the response status code should be 201
@@ -21,7 +21,7 @@ Feature: Create a new course
     {
       "id":"ef8ac118-8d7f-49cc-abec-78e0d05af80a",
       "name": 5,
-      "duration": "5 hours"
+      "duration": 2
     }
     """
     Then the response status code should be 422

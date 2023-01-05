@@ -9,7 +9,7 @@ export const register = (router: Router) => {
   const reqSchema = [
     body('id').exists().isString().isUUID('4'),
     body('name').exists().isString(),
-    body('duration').exists().isString(),
+    body('duration').exists().isNumeric(),
   ]
 
   const coursePutController = container.get('Apps.mooc.controllers.CoursePutController');
