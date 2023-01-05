@@ -1,14 +1,15 @@
-import { Course } from "../../../../../../src/Contexts/Mooc/Courses/domain/Course";
-import { FileCourseRepository } from "../../../../../../src/Contexts/Mooc/Courses/infrastructure/persistence/FileCourseRepository";
-import { Uuid } from "../../../../../../src/Contexts/Shared/domain/value-object/Uuid";
+import { FileCourseRepository } from '../../../../../../src/Contexts/Mooc/Courses/infrastructure/persistence/FileCourseRepository';
+import { CourseMother } from '../../domain/CourseMother';
 
-describe('Save Course',() =>{
-    it('should save a course',async () =>{
-        const repository = new FileCourseRepository();
-        
-        const course = new Course({"id":new Uuid("56971a7d-60cf-4777-99fc-47c3ca1d7ec8"),"name":"","duration":""});
+describe('FileCourseRepository', () => {
+  it('should save a course', async () => {
+    const repository = new FileCourseRepository();
+    const expectedCourse = CourseMother.random();
 
-        await repository.save(course);
+    await repository.save(expectedCourse);
 
-    })
-})
+    
+    const course = await repository.search(expectedCourse.id.value);
+    expect(course).toEqual(expectedCourse);
+  });
+});
