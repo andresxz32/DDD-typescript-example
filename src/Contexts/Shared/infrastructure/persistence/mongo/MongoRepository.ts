@@ -1,7 +1,5 @@
-import MongoConfig from '../../../../../Shared/infrastructure/persistence/mongo/MongoConfig';
-import config from '../../config';
 import { Collection, MongoClient } from 'mongodb';
-import { AggregateRoot } from '../../../../../Shared/domain/AggregateRoot';
+import { AggregateRoot } from '../../../domain/AggregateRoot';
 
 
 export abstract class MongoRepository<T extends AggregateRoot> {
@@ -23,15 +21,5 @@ export abstract class MongoRepository<T extends AggregateRoot> {
         const document = { ...aggregateRoot.toPrimitives(), _id: id, id: undefined };
 
         await collection.updateOne({ _id: id }, { $set: document }, { upsert: true });
-    }
-}
-
-const mongoConfig = {
-    url: config.get('mongo.url')
-};
-
-export class MongoConfigFactory {
-    static createConfig(): MongoConfig {
-        return mongoConfig;
     }
 }
