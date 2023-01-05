@@ -1,5 +1,6 @@
 version: '3.8'
 
+
 services:
   mongo:
     image: mongo:5.0.0
@@ -9,3 +10,13 @@ services:
       - ./data/mongo:/data/db:delegated
     ports:
       - 27017:27017
+
+  ddd-typescript-example:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # environment:
+    #   ENV_NAME: dev
+    ports:
+      - 5000:5000
+  
