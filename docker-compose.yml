@@ -11,12 +11,12 @@ services:
     ports:
       - 27017:27017
 
-  ddd-typescript-example:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # environment:
-    #   ENV_NAME: dev
-    ports:
-      - 5000:5000
+  # ddd-typescript-example:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   # environment:
+  #   #   ENV_NAME: dev
+  #   ports:
+  #     - 5000:5000
   
